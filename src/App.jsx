@@ -14,9 +14,9 @@ function App() {
   
   return (
     <>
-    <SingUpForm/>
-     {/*  <Navbar onSearch={handleNavbarSearch}/>
-      <Events searchTerm={searchTerm}/> */}
+    {/* <SingUpForm/> */}
+      <Navbar onSearch={handleNavbarSearch}/>
+      <Events searchTerm={searchTerm}/>
     </>
   )
 }
