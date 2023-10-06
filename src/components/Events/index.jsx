@@ -1,14 +1,9 @@
 import EventItem from "./components/EventItem";
-import eventsJSON from "../../data/events.json";
-import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
-export default function Events({searchTerm}) {
-
-  const [data] = useState(eventsJSON)
-  const {_embedded: { events }} = data;
-
+export default function Events({searchTerm, events}) {
+  
   const navigate = useNavigate();
 
   const handleEventItemClick = id => {

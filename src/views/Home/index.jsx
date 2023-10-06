@@ -1,9 +1,11 @@
 import { useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Events from "../../components/Events";
+import useEventsData from "../../hooks/useEventsData";
+
 
 export default function Home() {
-  
+  const {events, isLoading, error, fetchEvents} = useEventsData();
   const [searchTerm, setSearchTerm] = useState('');
   const containerRef = useRef();
 
@@ -15,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Navbar onSearch={handleNavbarSearch} ref={containerRef}/>
-      <Events searchTerm={searchTerm}/>
+      <Events searchTerm={searchTerm} events={events}/>
     </>
   )
   
