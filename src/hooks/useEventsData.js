@@ -1,24 +1,21 @@
 import { useState } from 'react';
 
-
-
 const useEventsData = ()=> {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState();
-
   
-  const fetchEvents = async ()=>{
+  const fetchEvents = async (params)=>{
     try {
-      const response = await fetch('https://app.ticketmaster.com/discovery/v2/events.json?apikey=7dLCneAzqrAwCD11bGKVHnXgTfTyddbO')
-      const data = await response.json();
+      const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=4SA83dC5Jok4wK8GBbFsVWKXBbRSHNo5${params?.length ? params : ''}`)
+      const ApiData = await response.json();
+
+      setData(ApiData)
       setIsLoading(false);
     } catch (error) {
       setError(error)
     }
   }
-  fetchEvents();
-  
 
   return {
     events: data?._embedded?.events || [],
